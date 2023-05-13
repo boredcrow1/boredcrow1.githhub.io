@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Retroflex-signup</title>
+  <link rel="shortcut icon" type="image/jpg"
+    href="https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/4dc93430-4653-4956-a2b3-beac9ecc64bd/design-previews/94a9f5bc-8e3e-46f3-92de-ea85d12e51f1/1678025013478-thumbnail.jpeg" />
+  <link rel="stylesheet" href="./login-signup.css">
+
+</head>
+
+<body>
+  <div class="content">
+    <h1>Sign up?</h1>
+    <form class="login page">
+      <br>
+      <div class="input-container">
+        <input type="text" id="name-input" required>
+        <label for="name-input" class="ename">Email address</label>
+      </div>
+      <br>
+      <div class="input-container" required>
+        <input type="password" id="pname-input">
+        <label for="pname-input" class="ename">password</label>
+      </div>
+      <br>
+      <div class="input-container" required>
+        <input type="password" id="pname-input">
+        <label for="pname-input" class="ename">confirm-password</label>
+      </div>
+      <div class="forgot-password-link">
+        <a href="forgot-password-really.com">Forgot password?</a>
+      </div>
+      <br>
+      <form>
+        <input type="submit" id="continue-btn" class="submit-button" value="Continue" />
+      </form>
+      <br>
+      <span>Already have an account?&nbsp&nbsp<a href="./login-page.html">Log in</a></span>
+      <br>
+      <div class="hcontainer">
+        <span class="htext">OR</span>
+        <span class="hline"></span>
+      </div>
+      <div class="google-btn">
+        <button type="button" class="login-with-google-btn">
+          Continue with Google
+        </button>
+      </div>
+      <div class="micro-btn">
+        <button type="button" class="login-with-microsoft">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+            <title>MS-SymbolLockup</title>
+            <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+          </svg>
+          Continue with Microsoft
+        </button>
+      </div>
+      <div class="content-policy">
+        <a href="terms-of-use.com">Terms of use</a>
+        <span>&nbsp|&nbsp</span>
+        <a href="terms-of-use.com">Privacy policy</a>
+      </div>
+  </div>
+  <!-- partial -->
+
+</body>
+
+</html>
+
+<script>
+  const emailInput = document.getElementById('name-input');
+  const passwordInput = document.getElementById('password-input');
+  const confirmPasswordInput = document.getElementById('confirm-password');
+  const validationError = document.getElementById('validation-error');
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); // prevent form from submitting
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // regular expression to validate email format
+
+    const errors = [];
+
+    // validate email input
+    if (!emailRegex.test(emailInput.value)) {
+      errors.push('Please enter a valid email address.');
+    }
+
+    // validate password input
+    if (passwordInput.value.length < 6) {
+      errors.push('Password must be at least 6 characters.');
+    }
+    if (errors.length > 0) {
+      alert(errors.join('\n')); // display error messages
+      return;
+    }
+
+    // if inputs are valid, allow form to submit
+    form.submit();
+  });
+  const googleBtn = document.querySelector('.google-btn button');
+  const spotBtn = document.querySelector('.spot-btn button');
+
+  function checkPasswords() {
+    if (passwordInput.value !== confirmPasswordInput.value) {
+      validationError.innerText = "Passwords do not match.";
+    } else {
+      validationError.innerText = "";
+    }
+  }
+
+  passwordInput.addEventListener('input', checkPasswords);
+  confirmPasswordInput.addEventListener('input', checkPasswords)
+
+  googleBtn.addEventListener('click', () => {
+    // retrieve all Google accounts of the user
+    const googleAccounts = retrieveGoogleAccounts();
+
+    // display the accounts in the console
+    console.log(googleAccounts);
+  });
+
+  spotBtn.addEventListener('click', () => {
+    // retrieve all Spotify accounts of the user
+    const spotAccounts = retrieveSpotifyAccounts();
+
+    // display the accounts in the console
+    console.log(spotAccounts);
+  });
+
+  function retrieveGoogleAccounts() {
+    // logic to retrieve all Google accounts of the user
+    // ...
+    return ['example1@gmail.com', 'example2@gmail.com', 'example3@gmail.com'];
+  }
+
+  function retrieveSpotifyAccounts() {
+    // logic to retrieve all Spotify accounts of the user
+    // ...
+    return ['example1@spotify.com', 'example2@spotify.com', 'example3@spotify.com'];
+  }
+
+  // Load the Google Sign-In API client library
+  gapi.load('auth2', function () {
+    gapi.auth2.init({
+      client_id: 'YOUR_CLIENT_ID',
+    });
+  });
+
+  // Retrieve the user's Google account information
+  function retrieveGoogleAccounts() {
+    gapi.auth2.getAuthInstance().signIn().then(function (googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('Name: ' + profile.getName());
+      console.log('Email: ' + profile.getEmail());
+    });
+  }
+
+  // Attach click event listener to the "Continue with Google" button
+  var googleButton = document.querySelector('.login-with-google-btn');
+  googleButton.addEventListener('click', function () {
+    retrieveGoogleAccounts();
+  });
+  // Spotify API endpoints
+  var AUTH_URL = 'https://accounts.spotify.com/authorize';
+  var TOKEN_URL = 'https://accounts.spotify.com/api/token';
+  var PROFILE_URL = 'https://api.spotify.com/v1/me';
+
+  // Spotify app credentials
+  var CLIENT_ID = 'YOUR_CLIENT_ID';
+  var CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
+  var REDIRECT_URI = 'YOUR_REDIRECT_URI';
+
+  // Authenticate the user with Spotify
+  function authenticateWithSpotify() {
+    var state = generateRandomString(16);
+    localStorage.setItem('spotify_auth_state', state);
+
+    var scope = 'user-read-email';
+
+    var url = AUTH_URL +
+      '?response_type=code' +
+      '&client_id=' + encodeURIComponent(CLIENT_ID) +
+      '&scope=' + encodeURIComponent(scope) +
+      '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) +
+      '&state=' + encodeURIComponent(state);
+
+    window.location.href = url;
+  }
+
+  // Retrieve the user's Spotify account information
+  function retrieveSpotifyAccounts(token) {
+    var headers = {
+      'Authorization': 'Bearer ' + token
+    };
+
+    fetch(PROFILE_URL, { headers: headers })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log('Name: ' + data.display_name);
+        console.log('Email: ' + data.email);
+      });
+  }
+
+  // Generate a random string
+  function generateRandomString(length) {
+    var text = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (var i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+  }
+
+  // Attach click event listener to the "Continue with Spotify" button
+  var spotifyButton = document.querySelector('.login-with-spot');
+  spotifyButton.addEventListener('click', function () {
+    authenticateWithSpotify();
+  });
+
+  // Check if the user was redirected from the Spotify authentication page
+  var urlParams = new URLSearchParams(window.location.search);
+  var code = urlParams.get('code');
+  var state = urlParams.get('state');
+  var storedState = localStorage.getItem('spotify_auth_state');
+
+  if (code && state && storedState && state === storedState) {
+    localStorage.removeItem('spotify_auth_state');
+
+    var formData = new FormData();
+    formData.append('grant_type', 'authorization_code');
+    formData.append('code', code);
+    formData.append('redirect_uri', REDIRECT_URI);
+    formData.append('client_id', CLIENT_ID);
+    formData.append('client_secret', CLIENT_SECRET);
+
+    fetch(TOKEN_URL, {
+      method: 'POST',
+      body: formData
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var access_token = data.access_token;
+        retrieveSpotifyAccounts(access_token);
+
+      });
+  }
+
+</script>
+<script>
+  // Select the "Continue" button
+  const continueBtn = document.getElementById('continue-btn');
+
+  // Add a click event listener to the "Continue" button
+  continueBtn.addEventListener('click', (event) => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Redirect the user to the "interest-picker.html" page
+    window.location.href = 'verify-page.html';
+  });
+</script>

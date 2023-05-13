@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Retroflex-Verify</title>
+    <link rel="shortcut icon" type="image/jpg"
+        href="https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/4dc93430-4653-4956-a2b3-beac9ecc64bd/design-previews/94a9f5bc-8e3e-46f3-92de-ea85d12e51f1/1678025013478-thumbnail.jpeg" />
+    <link rel="stylesheet" href="./login-signup.css">
+
+</head>
+<div class="container">
+    <h2>Verify you account</h2>
+    <p>We emailed you the six digit code to cool_guy@email.com <br /> Enter the code below to confirm your email
+        address.</p>
+    <div class="code-container">
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+        <input type="number" class="code" placeholder="0" min="0" max="9" required />
+    </div>
+
+</html>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Muli:300,700&display=swap');
+
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --element-width: 350px;
+        --element-height: 50px;
+        --font-color: #999999;
+        --absolute-white: rgb(240, 240, 240);
+        --primary-color: #2e2e2e;
+        --secondary-color: #3c3c3c;
+        --accent-color: rgb(191, 10, 125);
+        --secondary-accent-color: rgba(16, 163, 127, 1);
+    }
+
+    body {
+        background-color: var(--primary-color);
+        font-family: 'Muli', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        color: var(--font-color);
+    }
+
+    .container {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 1000px;
+        text-align: center;
+    }
+
+    .code-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    .code {
+        background-color: var(--secondary-color);
+        border-radius: 5px;
+        font-size: 75px;
+        font-weight: 300;
+        margin: 1%;
+        height: 120px;
+        width: 100px;
+        text-align: center;
+        -moz-appearance: textfield;
+        /* Firefox */
+    }
+
+    .code:valid {
+        border-color: var(--secondary-accent-color);
+        box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+    }
+
+    .code::-webkit-outer-spin-button,
+    .code::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .info {
+        background-color: #eaeaea;
+        border-radius: 5px;
+        color: #777;
+        display: inline-block;
+        padding: 10px;
+        line-height: 20px;
+        max-width: 400px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .code-container {
+            flex-wrap: wrap;
+        }
+
+        .code {
+            font-size: 60px;
+            height: 80px;
+            max-width: 70px;
+        }
+    }
+</style>
+<script>
+    const codes = document.querySelectorAll('.code');
+
+    // Initially focus first input
+    codes[0].focus();
+
+    codes.forEach((code, idx) => {
+        code.addEventListener('keydown', (e) => {
+            if (e.key >= 0 && e.key <= 9) {
+                setTimeout(() => {
+                    codes[idx + 1].focus();
+                }, 10);
+            } else if (e.key === 'Backspace') {
+                setTimeout(() => {
+                    codes[idx - 1].focus();
+                }, 10);
+            }
+        });
+    });
+    const codeInputs = document.querySelectorAll('.code');
+    const lastCodeInput = codeInputs[codeInputs.length - 1];
+
+    lastCodeInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            window.location.href = 'playlist-base.html';
+        }
+    });
+
+</script>

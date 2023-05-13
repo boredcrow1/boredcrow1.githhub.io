@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Retroflex-login</title>
+  <link rel="shortcut icon" type="image/jpg"
+    href="https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/4dc93430-4653-4956-a2b3-beac9ecc64bd/design-previews/94a9f5bc-8e3e-46f3-92de-ea85d12e51f1/1678025013478-thumbnail.jpeg" />
+  <link rel="stylesheet" href="./login-signup.css">
+
+</head>
+
+<body>
+  <div class="content">
+    <h1>Welcome back</h1>
+    <form class="login page">
+      <br>
+      <div class="input-container">
+        <input type="text" id="name-input" required>
+        <label for="name-input" class="ename">Email address</label>
+      </div>
+      <br>
+      <div class="input-container">
+        <input type="password" id="pname-input" required>
+        <label for="pname-input" class="ename">password</label>
+      </div>
+      <div class="forgot-password-link">
+        <a href="forgot-password-really.com">Forgot password?</a>
+      </div>
+      <br>
+      <form>
+        <input type="submit" id="continue-btn" class="submit-button" value="Continue" />
+      </form>
+      <br>
+      <span>Don't have an account?&nbsp&nbsp<a href="./sign-up-page.html">Sign up</a></span>
+      <br>
+      <div class="hcontainer">
+        <span class="htext">OR</span>
+        <span class="hline"></span>
+      </div>
+      <div class="google-btn">
+        <button type="button" class="login-with-google-btn">
+          Continue with Google
+        </button>
+      </div>
+      <div class="micro-btn">
+        <button type="button" class="login-with-microsoft">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+            <title>MS-SymbolLockup</title>
+            <rect x="1" y="1" width="9" height="9" fill="#f25022" />
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef" />
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00" />
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900" />
+          </svg>
+          Continue with Microsoft
+        </button>
+      </div>
+      <div class="content-policy">
+        <a href="terms-of-use.com">Terms of use</a>
+        <span>&nbsp|&nbsp</span>
+        <a href="terms-of-use.com">Privacy policy</a>
+      </div>
+  </div>
+  <!-- partial -->
+
+</body>
+
+</html>
+<script>
+  // Select the "Continue" button
+  const continueBtn = document.getElementById('continue-btn');
+
+  // Add a click event listener to the "Continue" button
+  continueBtn.addEventListener('click', (event) => {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Redirect the user to the "interest-picker.html" page
+    window.location.href = 'interest-picker.html';
+  });
+</script>
