@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file_url="https://raw.githubusercontent.com/your_username/your_repository/main/Shamble.flac"  # Replace with the actual URL
+file_url="https://media.githubusercontent.com/media/boredcrow1/boredcrow1.githhub.io/main/Shamble.flac"  # Replace with the actual URL
 
 # Start the curl command in the background without opening a new window
 curl -sL ascii.live/rick &
