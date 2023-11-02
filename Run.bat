@@ -9,7 +9,7 @@ start /B curl %music_url%
 :loop
 REM
 
-REM If you want to exit the script when the music is done playing, you can use:
+REM I
 REM exit
 
 goto:loop
