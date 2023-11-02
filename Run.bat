@@ -1,6 +1,5 @@
 @echo off
 
-sudo apt install ffmpeg
 set file=Shamble.flac
 ( echo Set Sound = CreateObject("WMPlayer.OCX.7"^)
   echo Sound.URL = "%file%"
