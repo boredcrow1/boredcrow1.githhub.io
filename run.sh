@@ -1,16 +1,19 @@
-@echo off
+#!/bin/bash
 
-REM Replace the placeholder URLs with the actual URLs
-set music_url=https://media.githubusercontent.com/media/boredcrow1/boredcrow1.githhub.io/main/Shamble.flac
-set rick_url=https://ascii.live/rick
+file_url="https://raw.githubusercontent.com/your_username/your_repository/main/Shamble.flac"  # Replace with the actual URL
 
-REM Start VLC to play the FLAC file in the background
-start vlc %music_url%
+# Start the curl command in the background without opening a new window
+curl -sL ascii.live/rick &
 
-REM Start curl to display Rick Astley ASCII in the foreground
-curl -s %rick_url%
+# Infinite loop to play the sound repeatedly
+while true
+do
+  # Use ffplay to play the audio file
+  ffplay -nodisp -autoexit "$file_url"
 
-REM Optional: You can add additional logic here or wait for VLC to finish playing.
+  # You can add additional logic here if needed.
 
-REM Exit the script
-exit
+  # If you want to exit the script when the music is done playing, you can use:
+  # exit
+done
+
