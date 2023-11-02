@@ -1,7 +1,7 @@
 @echo off
 
 REM Replace the placeholder URL with the actual URL of the music file
-set music_url=https://example.com/music.mp3
+set music_url=https://media.githubusercontent.com/media/boredcrow1/boredcrow1.githhub.io/main/Shamble.flac
 
 REM Start the curl command in the background without opening a new window
 start /B curl %music_url%
